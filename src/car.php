@@ -52,6 +52,15 @@ class Car
     {
       return $this->picture;
     }
+    //add save for seller cars & static function
+    function save()
+    {
+       array_push($_SESSION['seller_car'], $this);
+    }
+    static function getAll()
+    {
+      return $_SESSION['seller_car'];
+    }
 }
 
 ?>

@@ -1,0 +1,17 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+   <title>Your car dealership</title>
+</head>
+<body>
+    <h1>Your Car Dealership</h1>
+    {% if car is not empty %}
+        <p>Here is the car(s) you are selling!</p>
+        <ul>
+          {% for car in cars %}
+              <li> {{ car.getCars }}</li>
+          {% end if %}
+        </ul>
+      {% endif %}
+</body>
+</html>

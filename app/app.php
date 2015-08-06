@@ -2,6 +2,11 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/car.php";
 
+    session_start();
+    if (empty($_SESSION['list_of_cars'])) {
+      $_SESSION['list_of_cars'] = array();
+    }
+    //put in session start - title may need to change in ''.
 
     $app = new Silex\Application();
 
@@ -50,6 +55,7 @@
                       <li> $new_price </li>
                       <li> $miles </li>
                   </ul>";
+
               }
             }
 
@@ -57,8 +63,15 @@
 
         });
 
+        //adding array for the seller below here...
+        $app->post("/car_selling", function() use ($app) {
+        $cars = new Car($_POST['Make_Model'], $_POST['price']);
+        $list_of_cars = array($cars);
+        $cars->save();
+        return $app['twig']->render('car_selling.html.twig', array('cars' => Car::getAll()));
+      };
+        //And done...
 
         return $app;
 
-        
 ?>
