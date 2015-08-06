@@ -11,13 +11,13 @@
 
     $app['debug'] = true;
 
-    $app->get("/", function() use ($app) {
-      //  $car = new Car($_GET['price'], $_GET['miles']);
+    $app->get("/car_matching_search", function() use ($app) {
         return $app['twig']->render ('car_form.html.twig');
 
     });
 
-      $app->get("/car", function() {
+     $app->get("/car", function() {
+
           $first_car = new Car("2014 Porsche 911", 7864, 114991, "img/porsche.jpg");
           $second_car = new Car("2011 Ford F450", 14000, 55995, "img/ford.jpeg");
           $third_car = new Car("2013 Lexus RX 350", 20000, 44700, "img/lexus.jpg");
@@ -29,7 +29,7 @@
                   if ($car->worthBuying($_GET["price"], $_GET["miles"])) {
                       array_push($cars_matching_search, $car);
               }
-           }
+           };
 
            $output = "";
 
@@ -52,11 +52,13 @@
                   </ul>";
               }
             }
-            return $output;
 
-    });
+        return $output;
+
+        });
+
 
         return $app;
 
-
+        
 ?>

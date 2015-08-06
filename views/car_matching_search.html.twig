@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-   <html>
-     <head>
-       <title>Your car dealership</title>
-     </head>
-       <body>
-           <h1>Your Car Dealership</h1>
-            <ul>
-            $output
-            </ul>
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+   <title>Your car dealership</title>
+</head>
+<body>
+    <h1>Your Car Dealership</h1>
+    {% if car is not empty %}
+        <p>Here are the cars that match your search:</p>
+        <ul>
+          {% for car in cars %}
+              <li> {{ car.getCars }}</li>
+          {% end if %}
+        </ul>
+      {% endif %}
 </body>
 </html>
